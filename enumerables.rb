@@ -77,11 +77,13 @@ p return_value  # => [1, 2, 3]
 #my_flatten should return all elements of the array into a new, one-dimensional array. Hint: use recursion!
 #
 #Example:
-    
+require "byebug"
+
     def my_flatten
         return [self] if !self.is_a?(Array)
         result = []
         self.each do |num|
+            debugger
             result += self.my_flatten
         end
         result
