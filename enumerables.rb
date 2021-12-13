@@ -35,8 +35,42 @@ p return_value  # => [1, 2, 3]
        result
     end
 
-end
 
-p a = [1, 2, 3]
-p a.my_select { |num| num > 1 } # => [2, 3]
-p a.my_select { |num| num == 4 } # => []
+
+    p a = [1, 2, 3]
+    p a.my_select { |num| num > 1 } # => [2, 3]
+    p a.my_select { |num| num == 4 } # => []
+
+    # My Reject
+    # Write my_reject to take a block and return a new array excluding elements that satisfy the block.
+    def my_reject(&prc)
+        result = []
+        self.each {|num| result << num if !prc.call(num)}
+        result
+    end
+    # Example:
+
+    p a = [1, 2, 3]
+    p a.my_reject { |num| num > 1 } # => [1]
+    p a.my_reject { |num| num == 4 } # => [1, 2, 3]
+
+    # My Any
+    # Write my_any? to return true if any elements of the array satisfy the block and my_all? to return true only if all elements satisfy the block.
+
+    # Example:
+    def my_any?(&prc)
+        self.any? {|num| prc.call(num) }
+    end
+
+    def my_all?(&prc)
+        self.all? {|num| prc.call(num) }
+    end
+
+
+    p a = [1, 2, 3]
+    p a.my_any? { |num| num > 1 } # => true
+    p a.my_any? { |num| num == 4 } # => false
+    p a.my_all? { |num| num > 1 } # => false
+    p a.my_all? { |num| num < 4 } # => true
+
+end
