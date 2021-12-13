@@ -77,9 +77,9 @@ p return_value  # => [1, 2, 3]
 #my_flatten should return all elements of the array into a new, one-dimensional array. Hint: use recursion!
 #
 #Example:
-
+    
     def my_flatten
-        return [num] if num.is_a?(Array)
+        return [self] if !self.is_a?(Array)
         result = []
         self.each do |num|
             result += self.my_flatten
@@ -87,6 +87,6 @@ p return_value  # => [1, 2, 3]
         result
     end
 
-p [1, 2, 3, [4, [5, 6]], [[[7]], 8]].my_flatten # => [1, 2, 3, 4, 5, 6, 7, 8]
+    p [1, 2, 3, [4, [5, 6]], [[[7]], 8]].my_flatten # => [1, 2, 3, 4, 5, 6, 7, 8]
 
 end
